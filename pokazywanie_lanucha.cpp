@@ -9,9 +9,32 @@ U¿yj opisanej funkcji w prostym programie, który poka¿e jej dzia³anie.
 #include <stdio.h>
 #include <string>
 
-using namespace std;
+static int counter = 0;
 
-void show_me(char arr[], ...);
+template <typename T>
+void show_me(T t)
+{
+    std::cout << t << std::endl;
+    counter++;
+}
+
+template<typename T1, typename T2>
+void show_me(T1 t, T2 arg)
+{
+    if (arg != 0)
+    {
+        for (int i = 0; i < counter; i++)
+         {
+                 std::cout << t << " ";
+         };
+
+    }
+
+     counter++;
+
+}
+
+//void show_me(char arr[], ...);
 
 int main()
 {
@@ -21,36 +44,23 @@ int main()
     show_me(name);
     show_me(name);
     show_me(name);
-    show_me(name, 2);
+    show_me(name, 1);
 
     return 0;
 }
 
-void show_me(char arr[], ...)
+/*void show_me(char arr[], ...)
 {
-     static int counter = 0;
-
-     va_list arguments;
-
-     /* Initializing arguments to store all values after arr */
-     va_start ( arguments, arr );
-
-     int x = va_arg(arguments, int);
-
-     if (x == 0)
-     {
-        return;
-     }
-
+    if ()
+      cout << arr << " ";
+      return;
 
      for (int i = 0; i < counter; i++)
      {
              cout << arr << " ";
      }
-     va_end ( arguments );
 
-
-    cout << endl;
 
     counter++;
 }
+*/
